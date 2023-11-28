@@ -1,0 +1,28 @@
+{{template "base/head" .}}
+<div role="main" aria-label="{{if .IsSigned}}{{.locale.Tr "dashboard"}}{{else}}{{.locale.Tr "home"}}{{end}}" class="page-content home" style="height: 80vh; display: flex; align-items: center; justify-content: center;">
+	<div class="ui stackable middle very relaxed page grid">
+		<div class="sixteen wide center aligned centered column">
+			<div>
+				<pre style="line-height: 1;">
+███████╗██╗   ██╗██████╗ ███████╗██████╗ 
+██╔════╝██║   ██║██╔══██╗██╔════╝██╔══██╗
+███████╗██║   ██║██████╔╝█████╗  ██████╔╝
+╚════██║██║   ██║██╔═══╝ ██╔══╝  ██╔══██╗
+███████║╚██████╔╝██║     ███████╗██║  ██║
+╚══════╝ ╚═════╝ ╚═╝     ╚══════╝╚═╝  ╚═╝
+</pre>
+<br>
+				<img class="logo" width="280" src="{{AssetUrlPrefix}}/img/supernets.png" alt="{{.locale.Tr "supernets"}}"/>
+<br><br><pre style="line-height: 1;">
+███╗   ██╗███████╗████████╗███████╗
+████╗  ██║██╔════╝╚══██╔══╝██╔════╝
+██╔██╗ ██║█████╗     ██║   ███████╗
+██║╚██╗██║██╔══╝     ██║   ╚════██║
+██║ ╚████║███████╗   ██║   ███████║
+╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚══════╝
+</pre>
+			</div>
+		</div>
+	</div>
+</div>
+{{template "base/footer" .}}
