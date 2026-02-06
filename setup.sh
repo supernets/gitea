@@ -45,6 +45,10 @@ sed -i "s|__INTERNAL_TOKEN__|${GITEA_INTERNAL_TOKEN}|g" /opt/container-storage/g
 # Run the Gitea container with restart policy
 docker run -d --restart unless-stopped --name gitea -e USER_UID=$(id -u) -e USER_GID=$(id -g) -p 127.0.0.1:3000:3000 -p 2222:2222 -v /opt/container-storage/gitea/data:/data gitea/gitea:latest
 
+# Generate a random password for the admin user
+ADMIN_PASSWORD=$(openssl rand -base64 12)
+
 # Wait for Gitea to be ready, then create admin user
 sleep 5
-docker exec --user git gitea gitea admin user create --admin --username acidvegas --password loldongs --email acid.vegas@acid.vegas
+docker exec --user git gitea gitea admin user create --admin --username acidvegas --password ${ADMIN_PASSWORD} --email acid.vegas@acid.vegas
+echo "Admin password: ${ADMIN_PASSWORD}"
