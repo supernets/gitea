@@ -1,0 +1,4 @@
+# SuperNETs Gitea Deployment - Developed by acidvegas (https://git.supernets.org/supernets/gitea)
+# gitea/.gitignore
+
+.env
