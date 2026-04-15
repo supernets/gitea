@@ -8,11 +8,6 @@
 # Set xtrace, exit on error, & verbose mode (after loading environment variables)
 set -xev
 
-# Check for required environment variables
-[ -z "${GITEA_INSTANCE_URL}" ] && { echo "Error: GITEA_INSTANCE_URL not set in .env"; exit 1; }
-[ -z "${GITEA_RUNNER_TOKEN}" ] && { echo "Error: GITEA_RUNNER_TOKEN not set in .env"; exit 1; }
-[ -z "${GITEA_RUNNER_NAME}"  ] && { echo "Error: GITEA_RUNNER_NAME not set in .env";  exit 1; }
-
 # Remove existing docker container if it exists
 docker rm -f gitea-runner 2>/dev/null || true
 
@@ -21,7 +16,7 @@ mkdir -p /opt/containers/gitea-runner
 
 # Generate runner config if it doesn't exist
 if [ ! -f /opt/containers/gitea-runner/config.yaml ]; then
-		docker run --rm --entrypoint act_runner gitea/act_runner:latest generate-config > /opt/containers/gitea-runner/config.yaml
+	docker run --rm --entrypoint act_runner gitea/act_runner:latest generate-config > /opt/containers/gitea-runner/config.yaml
 fi
 
 # Run the runner container (registers automatically via environment variables)
