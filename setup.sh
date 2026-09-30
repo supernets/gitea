@@ -41,6 +41,7 @@ cp -r custom/* /opt/container-storage/gitea/data/gitea/
 cp app.ini /opt/container-storage/gitea/data/gitea/conf/app.ini
 sed -i "s|__SECRET_KEY__|${GITEA_SECRET_KEY}|g"         /opt/container-storage/gitea/data/gitea/conf/app.ini
 sed -i "s|__INTERNAL_TOKEN__|${GITEA_INTERNAL_TOKEN}|g" /opt/container-storage/gitea/data/gitea/conf/app.ini
+sed -i "s|__WEBHOOK_ALLOWED_HOST__|${GITEA_WEBHOOK_ALLOWED_HOST}|g" /opt/container-storage/gitea/data/gitea/conf/app.ini
 
 # Run the Gitea container with restart policy
 docker run -d --restart unless-stopped --name gitea -e USER_UID=$(id -u) -e USER_GID=$(id -g) -p 127.0.0.1:3000:3000 -p 2222:2222 -v /opt/container-storage/gitea/data:/data gitea/gitea:latest

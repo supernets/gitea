@@ -1,0 +1,14 @@
+[Unit]
+Description=gitea IRC bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/agent/bots/gitea
+ExecStart=/usr/bin/python3 /home/agent/bots/gitea/gitea.py
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=default.target
